@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayMonger Docs</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <nav id="navbar">
+        <span class="toggle__icon">
+
+        </span>
+        <div class="logo__wrapper">
+            <img class="logo" src="./logo/logo.png" alt="vue-logo">
+            <header>PayMonger Documentation</header>
+        </div>
+        <ul>
+            <li><a href="#Introduction" class="nav-link">Introduction</a></li>
+            <li><a href="#Getting_Started" class="nav-link">Getting Started</a></li>
+            <li><a href="#Resources" class="nav-link">Resources</a></li>
+        </ul>
+    </nav>
+      
+    <main id="main-doc">
+        <section id="Introduction" class="main-section">
+            <header>Introduction</header>
+            <hr>
+            <p>Welcome to the PayMonger Developer Documentation where you'll learn how to build amazing payment experiences with our SDK.</p>
+        </section>
+        <section id="Getting_Started" class="main-section">
+            <header><i class='bx bx-bulb'></i> Getting Started</header>
+            <blockquote>
+                To accept a payment, create a transaction using our API, our client Javascript library, Popup JS, or our SDKs. Every transaction includes a link that can be used to complete payment.
+            </blockquote>
+            <h3>Popup</h3>
+            <p>Paymonger Popup provides a simple and convenient payment flow for web. It can be integrated in very simple steps, making it the easiest way to start making payments. See demo of the <a href="../demo/demo.html">checkout here.</a></p>
+            <h3>Import PayMonger SDK</h3>
+            <p>The PayMonger inline javascript is included using a script tag. This is how you import PayMonger into your code.</p>
+            <div class="code-js">
+                <pre>
+<span><</span>script src=<span class="tag">"https://sdk.pay.mypeacemonger.betalabs.online/paymonger.js"><span><</span>/script<span>></span>
+                </pre>
+            </div>
+            <h3>Initialize</h3>
+            <p>To initialize the transaction, you'll need to pass information such as email, first name, last name amount, transaction reference, etc. Email and amount are required. You can also pass any other additional information in the metadata object field.</p>
+            <p>The Pay button has been tied to an onClick function called PayMonger. This is the action that causes the PayMonger popup to load.</p>
+            <div class="code-html">
+                <pre>
+<span><</span>form method=<span class="tag">"POST"<span>></span>
+    <span><</span>input type=<span class="tag">"number"<span>></span>
+    <span><</span>button onclick=<span class="tag">"PayMonger()">Proceed<span><</span>/button<span>></span>
+<span><</span>/form<span>></span>
+                </pre>
+            </div>
+            <p>PayMonger Function</p>
+            <div class="code-js">
+                <pre>
+function PayMonger() {
+    let amt = document.getElementById("amount").value;
+    PeaceMongerSDK.initialize({
+        amount: amt,
+        currency: "NGN",
+        customer_name: "Olaseyo Olumide",
+        customer_email: "good.olumide751@gmail.com",
+        MONGER_API_KEY: "23622f47-52ef-4902-bcc1-827b87418f3a",
+        MONGER_APP_ID: "DIlXlo0pQiVb70w3qERUY6XDbMx7B1",
+        payment_description: "NGVSHAGS",
+        isTestMode: true,
+        payment_methods: "109",
+        
+        onComplete: function(response){
+            //Implement what happens when transaction is completed.
+            console.log(response);
+        },
+        onClose: function(data){
+            //Implement what should happen when the modal is closed here
+            console.log(data);
+        }
+    });
+}
+                </pre>
+            </div>
+        </section>
+        <section id="parameters">
+            <header>Parameters</header>
+            <p>Here is the full list of parameters you can pass:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Required</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>Yes</td>
+                        <td>Customer Name</td>
+                    </tr>
+                    <tr>
+                        <td>Amount</td>
+                        <td>Yes</td>
+                        <td>Customer Name</td>
+                    </tr>
+                    <tr>
+                        <td>Currency</td>
+                        <td>Yes</td>
+                        <td>Customer Name</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>Yes</td>
+                        <td>Customer Name</td>
+                    </tr>
+                    <tr>
+                        <td>API Key</td>
+                        <td>Yes</td>
+                        <td>Customer Name</td>
+                    </tr>
+                    <tr>
+                        <td>APP ID</td>
+                        <td>Yes</td>
+                        <td>Customer Name</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>Yes</td>
+                        <td>Customer Name</td>
+                    </tr>
+                    <tr>
+                        <td>isTestMode</td>
+                        <td>Yes</td>
+                        <td>Customer Name</td>
+                    </tr>
+                    <tr>
+                        <td>Payment Method</td>
+                        <td>Yes</td>
+                        <td>Customer Name</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section id="response">
+            <header>Response</header>
+            <p>Below is the list of responses you can receive from the payment endpoint and what you should do next:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>Customer Name</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section id="Resources" class="main-section">
+            <header>Resources</header>
+            <ul>
+                <li><a target="_blank" href="https://demo.pay.mypeacemonger.betalabs.online">View Demo</a></li>
+            </ul>
+        </section>  
+    </main>
+</body>
+</html>
