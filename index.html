@@ -99,53 +99,81 @@ function PayMonger() {
                     <tr>
                         <td>Name</td>
                         <td>Yes</td>
-                        <td>Customer Name</td>
+                        <td>This field contains the full name of the customer</td>
                     </tr>
                     <tr>
                         <td>Amount</td>
                         <td>Yes</td>
-                        <td>Customer Name</td>
+                        <td>Amount (in the lowest currency value - kobo or cent) you are debiting customer. Do not pass this if creating subscriptions.</td>
                     </tr>
                     <tr>
                         <td>Currency</td>
                         <td>Yes</td>
-                        <td>Customer Name</td>
+                        <td>Currency charge should be performed in. Allowed values are: NGN or USD It defaults to your integration currency.</td>
                     </tr>
                     <tr>
                         <td>Email</td>
                         <td>Yes</td>
-                        <td>Customer Name</td>
+                        <td>Email address of customer</td>
                     </tr>
                     <tr>
                         <td>API Key</td>
                         <td>Yes</td>
-                        <td>Customer Name</td>
+                        <td>Your public key from Paymonger. Use test key for test mode and live key for live modeName</td>
                     </tr>
                     <tr>
                         <td>APP ID</td>
                         <td>Yes</td>
-                        <td>Customer Name</td>
+                        <td>Your public ID from Paymonger. Use test ID for test mode and live ID for live mode</td>
                     </tr>
                     <tr>
                         <td>Description</td>
                         <td>Yes</td>
-                        <td>Customer Name</td>
+                        <td>Description for the transaction. Will be used as the account name for bank transfer payments</td>
                     </tr>
                     <tr>
                         <td>isTestMode</td>
                         <td>Yes</td>
-                        <td>Customer Name</td>
+                        <td>Boolean; <em>true</em> or <em>false</em>; Default is set to <em>true</em> </td>
                     </tr>
                     <tr>
                         <td>Payment Method</td>
                         <td>Yes</td>
-                        <td>Customer Name</td>
+                        <td>Default <em>"109"</em></td>
                     </tr>
                 </tbody>
             </table>
         </section>
         <section id="response">
-            <header>Response</header>
+            <header><p>Response</p></header>
+            <div class="code-js">
+                <pre>
+    {
+        "code": 202,
+        "status": "created",
+        "message": {
+            "success": [
+                "Deposit Created"
+            ]
+        },
+        "data": {
+            "deposit": {
+                "amount": "1000",
+                "currency": "NGN",
+                "reference": "G1X7QWG6Q6AN",
+                "customer_name": "Olaseyo Olumide",
+                "customer_email": "good.olumide751@gmail.com",
+                "payment_description": "Purchase payment",
+                "isTestMode": true,
+                "payment_methods": 0,
+                "updated_at": "2023-01-19T12:18:39.000000Z",
+                "created_at": "2023-01-19T12:18:39.000000Z",
+                "id": 231
+            }
+        }
+    }
+                </pre>
+            </div>
             <p>Below is the list of responses you can receive from the payment endpoint and what you should do next:</p>
             <table>
                 <thead>
@@ -156,8 +184,49 @@ function PayMonger() {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Name</td>
-                        <td>Customer Name</td>
+                        <td>code</td>
+                        <td>202</td>
+                    </tr>
+                    <tr>
+                        <td>status</td>
+                        <td>created</td>
+                    </tr><tr>
+                        <td>message[success]</td>
+                        <td>deposit created</td>
+                    </tr><tr>
+                        <td>data[deosit][amount]</td>
+                        <td>1000</td>
+                    </tr><tr>
+                        <td>currency</td>
+                        <td>NGN</td>
+                    </tr><tr>
+                        <td>reference</td>
+                        <td>G1X7QWG6Q6AN</td>
+                    </tr><tr>
+                        <td>customer name</td>
+                        <td>Olaseyo Olumide</td>
+                    </tr><tr>
+                        <td>customer email</td>
+                        <td>"good.olumide751@gmail.com"</td>
+                    </tr><tr>
+                        <td>payment description</td>
+                        <td>purchase payment</td>
+                    </tr><tr>
+                        <td>istestmode</td>
+                        <td>true</td>
+                    </tr><tr>
+                        <td>payment method</td>
+                        <td>0</td>
+                    </tr><tr>
+                        <td>updated at</td>
+                        <td>"2023-01-19T12:18:39.000000Z"</td>
+                    </tr><tr>
+                        <td>created at</td>
+                        <td>"2023-01-19T12:18:39.000000Z"</td>
+                    </tr><tr>
+                        <td>id</td>
+                        <td>231</td>
+                    </tr><tr>
                     </tr>
                 </tbody>
             </table>
